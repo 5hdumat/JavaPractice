@@ -2,7 +2,7 @@ package scanner;
 
 import org.junit.jupiter.api.Test;
 
-public class printf {
+public class Printf {
 
     /**
      * [형식화된 출력 printf]
