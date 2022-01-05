@@ -1,6 +1,5 @@
 package array;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -177,5 +176,79 @@ public class Array {
         for (int i : numArr) {
             System.out.print(i);
         }
+    }
+
+    @Test
+    public void 객체배열() throws Exception {
+        //given
+        String num = "1234567";
+        String num2 = "1234567";
+        char[] cha = {'1', '2', '3'};
+
+
+        // when
+        char c = num.charAt(3);// 인자 값인 인덱스 문자열 반환
+        int length = num.length();// 문자열 길이 반환
+        String substring = num.substring(1, 3); // 범위 내 문자열 반환
+        boolean equals = num.equals(num2); // 문자열의 내용이 인자 값인 obj와 같은지 반환
+
+        char[] chars = num.toCharArray(); // 문자열을 char 배열로 반환
+        String chaToString = new String(cha); // char -> String 변환
+
+        System.out.println(cha); // println으로 문자 배열 출력하면 한줄로 나열되어 출력된다.
+
+        // then
+        assertThat(c).isEqualTo('4');
+        assertThat(length).isEqualTo(7);
+    }
+
+    @Test
+    public void 다차원배열() throws Exception {
+        //given
+        int[][] num = {
+                {1, 2, 3},
+                {1, 2, 3},
+                {1, 2, 3},
+                {1, 2, 3},
+                {1, 2, 3}
+        };
+
+        // when
+
+        // 향상된 for문은 배열에 저장된 값을 변경할 수 없다.
+        for (int[] ints : num) {
+            for (int anInt : ints) {
+                System.out.print(anInt);
+            }
+            System.out.println();
+        }
+
+        for (int i = 0; i < num.length; i++) {
+            for (int j = 0; j < num[i].length; j++) {
+                System.out.print(num[i][j]);
+            }
+            System.out.println();
+        }
+        // then
+    }
+
+    @Test
+    public void 가변배열() throws Exception {
+        //given
+        int[][] num = new int[5][];
+
+        // when
+        // num 배열의 길이는 5지만 각 원소 배열의 길이는 모두 다르다.
+        num[0] = new int[5];
+        num[1] = new int[4];
+        num[2] = new int[3];
+        num[3] = new int[2];
+        num[4] = new int[1];
+
+        // then
+        for (int[] ints : num) {
+            System.out.println(ints.length);
+        }
+
     }
 }
